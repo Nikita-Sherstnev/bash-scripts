@@ -8,3 +8,7 @@ do
 done
 echo "Low: $low";
 echo "High: $high";
+
+while read line; do
+	echo $line
+done
