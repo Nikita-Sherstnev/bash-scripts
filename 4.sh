@@ -6,20 +6,19 @@ do
         h) high=${OPTARG};;
     esac
 done
-echo "Low: $low";
-echo "High: $high";
 
 readarray -t arr
 
-#declare -p arr
-
-let j=0;
 sum=0;
+numbers_array=( );
 for line in "${arr[@]}"
     do
-        numbers_array[$j] = echo "$line" | grep -Eo '[+-]?[0-9]+([.][0-9]+)?';
-        $j+=1;    
+        numbers_array+=("$(echo $line | grep -Ewo '[+-]?[0-9]+')")
     done
 
-sum=$(IFS=+; echo "$((${numbers_array[*]}))")
+echo "${#numbers_array[@]}"
+
+for i in ${numbers_array[@]}; do
+  let sum+=$i
+done
 echo $sum
