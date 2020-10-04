@@ -18,10 +18,8 @@ for line in "${arr[@]}"
 
 echo "${#numbers_array[@]}"
 
-
 for i in ${numbers_array[@]}; do
     if (( "$i" > "$low")) && (( "$i" < "$high" )); then
-        echo $i;
         let sum+=$i
     fi
 done
